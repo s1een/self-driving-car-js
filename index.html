@@ -6,23 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./icons/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>RACE RACE RACE!</title>
   </head>
   <body>
     <div class="wrapper">
       <div class="game">
-        <canvas id="carCanvas"></canvas>
-        <div id="verticalButtons">
+        <canvas id="carCanvas" class="road"></canvas>
+        <div
+          id="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          role="alert"
+        >
           <div class="score">
-            <h1 class="title">0</h1>
+            <span
+              class="rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold title"
+            >
+              0
+            </span>
           </div>
-          <button onclick="play()">🕹️</button>
-          <button onclick="learn()">📗</button>
-          <button onclick="save()">💾</button>
-          <button onclick="discard()">🗑️</button>
+          <button
+            class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 border border-indigo-700 rounded"
+            onclick="play()"
+          >
+            🕹️
+          </button>
+          <button
+            class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 border border-indigo-700 rounded"
+            onclick="learn()"
+          >
+            📗
+          </button>
+          <button
+            class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 border border-indigo-700 rounded"
+            onclick="save()"
+          >
+            💾
+          </button>
+          <button
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded"
+            onclick="discard()"
+          >
+            🗑️
+          </button>
         </div>
       </div>
-      <canvas id="networkCanvas"></canvas>
+      <canvas id="networkCanvas" class="img"></canvas>
+    </div>
+    <div
+      class="hint-window flex absolute bottom-0 w-full hidden items-center bg-indigo-900 text-white text-sm font-bold px-4 py-3"
+    >
+      <span
+        class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3"
+        >HNT</span
+      >
+      <p class="uppercase hint-text"></p>
     </div>
     <script src="./visualizer.js"></script>
     <script src="./network.js"></script>

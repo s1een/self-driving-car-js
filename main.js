@@ -1,11 +1,19 @@
 // Game Settings
-
 let N;
 let mode;
 let sensors;
 let start;
 let end;
-
+const hints = [
+  "Use ArrowDown to move back.",
+  "Use ArrowUP to move forward.",
+  "Use ArrowLeft to move left.",
+  "Use ArrowRight to move right.",
+];
+function getHint() {
+  return Math.ceil(Math.random() * hints.length - 1);
+}
+getHint();
 if (localStorage.getItem("N")) {
   N = parseInt(localStorage.getItem("N"));
   mode = localStorage.getItem("mode");
@@ -47,6 +55,7 @@ function PauseGame(event) {
       requestAnimationFrame(animate);
     } else {
       pauseScreen.classList.add("active");
+      alertWindow.removeAttribute("hidden");
       cancelAnimationFrame(start);
     }
   }
@@ -61,6 +70,8 @@ const networkCanvas = document.getElementById("networkCanvas");
 // Score
 const rate = document.querySelector(".title");
 const pauseScreen = document.querySelector(".wrapper");
+const alertWindow = document.querySelector(".hint-window");
+const hint = document.querySelector(".hint-text");
 // Widths
 carCanvas.width = 200;
 networkCanvas.width = 600;
@@ -110,7 +121,7 @@ function generateCars(N) {
 }
 
 function randomLine(lines) {
-  return Math.ceil(Math.random() * lines);
+  return Math.round(Math.random() * lines);
 }
 
 animate();
@@ -178,12 +189,16 @@ function endGame(start, cars) {
   if (cars.every((el) => el.isDestroy()) && bestCar.isDestroy()) {
     cancelAnimationFrame(start);
     pauseScreen.classList.add("gameover");
+    alertWindow.classList.remove("hidden");
+    hint.innerHTML = hints[getHint()];
   }
 
   if (mode === "KEYS") {
     if (end <= bestCar.y) {
       cancelAnimationFrame(start);
       pauseScreen.classList.add("gameover");
+      alertWindow.classList.remove("hidden");
+      hint.innerHTML = hints[getHint()];
     }
   } else {
     if (cars.every((el) => el.y >= end)) {
