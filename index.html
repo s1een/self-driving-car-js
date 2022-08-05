@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="game">
+        <canvas id="carCanvas"></canvas>
+        <div id="verticalButtons">
+          <div class="score">
+            <h1 class="title">0</h1>
+          </div>
+          <button onclick="play()">🕹️</button>
+          <button onclick="learn()">📗</button>
+          <button onclick="save()">💾</button>
+          <button onclick="discard()">🗑️</button>
+        </div>
+      </div>
+      <canvas id="networkCanvas"></canvas>
+    </div>
+    <script src="./visualizer.js"></script>
+    <script src="./network.js"></script>
+    <script src="./sensor.js"></script>
+    <script src="./road.js"></script>
+    <script src="./utils.js"></script>
+    <script src="./car.js"></script>
+    <script src="./controls.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
