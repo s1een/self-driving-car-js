@@ -116,6 +116,7 @@ function randomLine(lines) {
 animate();
 
 function animate(time) {
+  bestCar = cars.find((el) => el.y == Math.min(...cars.map((el) => el.y)));
   for (let i = 0; i < traffic.length; i++) {
     if (bestCar.y + 300 < traffic[i].y) {
       traffic[i] = new Car(
@@ -136,7 +137,6 @@ function animate(time) {
     cars[i].update(road.borders, traffic);
   }
 
-  bestCar = cars.find((el) => el.y == Math.min(...cars.map((el) => el.y)));
   carCanvas.height = window.innerHeight;
   networkCanvas.height = window.innerHeight;
 
