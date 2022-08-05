@@ -26,7 +26,7 @@ function play() {
   document.location.reload();
 }
 function learn() {
-  N = localStorage.setItem("N", 10);
+  N = localStorage.setItem("N", 100);
   mode = localStorage.setItem("mode", "AI");
   sensors = localStorage.setItem("sensor", "true");
   document.location.reload();
