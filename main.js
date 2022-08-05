@@ -11,9 +11,12 @@ if (localStorage.getItem("N")) {
   mode = localStorage.getItem("mode");
   sensors = Boolean(localStorage.getItem("sensor"));
 } else {
-  N = localStorage.setItem("N", 0);
-  mode = localStorage.setItem("mode", "KEYS");
+  localStorage.setItem("N", 0);
+  localStorage.setItem("mode", "KEYS");
   sensors = Boolean(localStorage.getItem("sensor"));
+  N = 0;
+  mode = "KEYS";
+  sensors = false;
 }
 
 function play() {
